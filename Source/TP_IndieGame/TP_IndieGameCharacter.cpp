@@ -5,7 +5,6 @@
 #include "Camera/CameraComponent.h"
 #include "Components/DecalComponent.h"
 #include "Components/CapsuleComponent.h"
-#include "Components/InputComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "GameFramework/PlayerController.h"
 #include "GameFramework/SpringArmComponent.h"
@@ -22,13 +21,6 @@ ATP_IndieGameCharacter::ATP_IndieGameCharacter()
 	bUseControllerRotationPitch = false;
 	bUseControllerRotationYaw = false;
 	bUseControllerRotationRoll = false;
-
-	// Configure key movement input
-	InputComponent = CreateDefaultSubobject<UInputComponent>(TEXT("Input"));
-	
-	InputComponent->BindAxis("MoveUp", this, &ATP_IndieGameCharacter::PlayerMoveUp);
-
-	
 
 	// Configure character movement
 	GetCharacterMovement()->bOrientRotationToMovement = true; // Rotate character to moving direction
