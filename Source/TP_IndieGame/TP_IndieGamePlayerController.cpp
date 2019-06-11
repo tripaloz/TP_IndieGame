@@ -37,6 +37,8 @@ void ATP_IndieGamePlayerController::SetupInputComponent()
 	InputComponent->BindTouch(EInputEvent::IE_Repeat, this, &ATP_IndieGamePlayerController::MoveToTouchLocation);
 
 	InputComponent->BindAction("ResetVR", IE_Pressed, this, &ATP_IndieGamePlayerController::OnResetVR);
+
+	InputComponent->BindAction("MoveUp", IE_Pressed, this, &ATP_IndieGamePlayerController::MoveUp);
 }
 
 void ATP_IndieGamePlayerController::OnResetVR()
@@ -109,4 +111,33 @@ void ATP_IndieGamePlayerController::OnSetDestinationReleased()
 {
 	// clear flag to indicate we should stop updating the destination
 	bMoveToMouseCursor = false;
+}
+
+// Custom functions
+
+void ATP_IndieGamePlayerController::MoveUp()
+{
+	APawn* MyPawn = GetPawn();
+	FVector NewLocation = MyPawn->GetActorLocation();
+
+	if (MyPawn)
+	{
+		NewLocation.X += 10.f;
+		MyPawn->SetActorLocation(NewLocation, true);
+	}
+}
+
+void ATP_IndieGamePlayerController::MoveDown()
+{
+
+}
+
+void ATP_IndieGamePlayerController::MoveLeft()
+{
+
+}
+
+void ATP_IndieGamePlayerController::MoveRight()
+{
+
 }
